@@ -85,6 +85,7 @@ int main(void)
             black=3;
          }
          //
+         int shadow=0;
          if(black==0)
          {
             double xi=ex+Tmin*rx;
@@ -99,8 +100,30 @@ int main(void)
             double sx=(xi-lx)/mag;
             double sy=(yi-ly)/mag;
             double sz=(zi-lz)/mag;
+            for(j=0;j<3;j++)
+            {
+               
+               //find b and c constant to calculate T for sphere1
+               double b=2*((sx*(lx-arr[j][0]))+(sy*(ly-arr[j][1]))+(sz*(lz-arr[j][2])));
+               double c=(lx-arr[j][0])*(lx-arr[j][0])+(ly-arr[j][1])*(ly-arr[j][1])+(lz-arr[j][2])*(lz-arr[j][2])-arr[j][3]*arr[j][3];
+               //
+               if(b*b-4*c>=0)// checking if it is hit or miss
+               {
+                  double T1=(-1*b+sqrt(b*b-4*c))/2;
+                  double T2=(-1*b-sqrt(b*b-4*c))/2;
+                  double T;
+                  if(T1<T2)
+                     T=T1;
+                  else
+                     T=T2;
+                  if(T<Tmin)
+                  {
+                     shadow=1;
+                  }
+               }
+            }
             double dot=nx*sx+ny*sy+nz*sz;
-            if(dot<0)
+            if(dot<0 || shadow)
             {
                dot=0;
             }
@@ -122,8 +145,30 @@ int main(void)
             double sx=(xi-lx)/mag;
             double sy=(yi-ly)/mag;
             double sz=(zi-lz)/mag;
+            for(j=0;j<3;j++)
+            {
+               
+               //find b and c constant to calculate T for sphere1
+               double b=2*((sx*(lx-arr[j][0]))+(sy*(ly-arr[j][1]))+(sz*(lz-arr[j][2])));
+               double c=(lx-arr[j][0])*(lx-arr[j][0])+(ly-arr[j][1])*(ly-arr[j][1])+(lz-arr[j][2])*(lz-arr[j][2])-arr[j][3]*arr[j][3];
+               //
+               if(b*b-4*c>=0)// checking if it is hit or miss
+               {
+                  double T1=(-1*b+sqrt(b*b-4*c))/2;
+                  double T2=(-1*b-sqrt(b*b-4*c))/2;
+                  double T;
+                  if(T1<T2)
+                     T=T1;
+                  else
+                     T=T2;
+                  if(T<Tmin)
+                  {
+                     shadow=1;
+                  }
+               }
+            }
             double dot=nx*sx+ny*sy+nz*sz;
-            if(dot<0)
+            if(dot<0|| shadow)
             {
                dot=0;
             }
@@ -145,8 +190,30 @@ int main(void)
             double sx=(xi-lx)/mag;
             double sy=(yi-ly)/mag;
             double sz=(zi-lz)/mag;
+            for(j=0;j<3;j++)
+            {
+               
+               //find b and c constant to calculate T for sphere1
+               double b=2*((sx*(lx-arr[j][0]))+(sy*(ly-arr[j][1]))+(sz*(lz-arr[j][2])));
+               double c=(lx-arr[j][0])*(lx-arr[j][0])+(ly-arr[j][1])*(ly-arr[j][1])+(lz-arr[j][2])*(lz-arr[j][2])-arr[j][3]*arr[j][3];
+               //
+               if(b*b-4*c>=0)// checking if it is hit or miss
+               {
+                  double T1=(-1*b+sqrt(b*b-4*c))/2;
+                  double T2=(-1*b-sqrt(b*b-4*c))/2;
+                  double T;
+                  if(T1<T2)
+                     T=T1;
+                  else
+                     T=T2;
+                  if(T<Tmin)
+                  {
+                     shadow=1;
+                  }
+               }
+            }
             double dot=nx*sx+ny*sy+nz*sz;
-            if(dot<0)
+            if(dot<0 || shadow)
             {
                dot=0;
             }
@@ -168,8 +235,30 @@ int main(void)
             double sx=(xi-lx)/mag;
             double sy=(yi-ly)/mag;
             double sz=(zi-lz)/mag;
+            for(j=0;j<3;j++)
+            {
+               
+               //find b and c constant to calculate T for sphere1
+               double b=2*((sx*(lx-arr[j][0]))+(sy*(ly-arr[j][1]))+(sz*(lz-arr[j][2])));
+               double c=(lx-arr[j][0])*(lx-arr[j][0])+(ly-arr[j][1])*(ly-arr[j][1])+(lz-arr[j][2])*(lz-arr[j][2])-arr[j][3]*arr[j][3];
+               //
+               if(b*b-4*c>=0)// checking if it is hit or miss
+               {
+                  double T1=(-1*b+sqrt(b*b-4*c))/2;
+                  double T2=(-1*b-sqrt(b*b-4*c))/2;
+                  double T;
+                  if(T1<T2)
+                     T=T1;
+                  else
+                     T=T2;
+                  if(T<Tmin)
+                  {
+                     shadow=1;
+                  }
+               }
+            }
             double dot=nx*sx+ny*sy+nz*sz;
-            if(dot<0)
+            if(dot<0 || shadow)
             {
                dot=0;
             }
